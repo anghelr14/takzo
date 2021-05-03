@@ -3,10 +3,10 @@ const showMenu = (toggleId, navId) => {
     const toggle = document.getElementById(toggleId),
         nav = document.getElementById(navId)
 
-    // Validate that variables exist
+    // VALIDANDO VARIABLES
     if (toggle && nav) {
         toggle.addEventListener('click', () => {
-            // We add the show-menu class to the div tag with the nav__menu class
+            //AÑADIENDO EL SHOW MENU CLASS AL DIV CON TAG NAV__MENU
             nav.classList.toggle('show-menu')
         })
     }
@@ -60,37 +60,37 @@ function scrollTop(){
 window.addEventListener('scroll', scrollTop)
 
 
-/**========== DARK MODE  ==========**/
+/**========== MODO OSCURO ==========**/
 const themeButton = document.getElementById('theme-button')
 const darkTheme = 'dark-theme'
 const iconTheme = 'bx-sun'
 
-// Previously selected topic (if user selected)
+// SELECCIONANDO TEMA
 const selectedTheme = localStorage.getItem('selected-theme')
 const selectedIcon = localStorage.getItem('selected-icon')
 
-// We obtain the current theme that the interface has by validating the dark-theme class
+// OBTENIENDO TEMA DE INTERFAZ
 const getCurrentTheme = () => document.body.classList.contains(darkTheme) ? 'dark' : 'light'
 const getCurrentIcon = () => themeButton.classList.contains(iconTheme) ? 'bx-moon' : 'bx-sun'
 
-// We validate if the user previously chose a topic
+// VALIDANDO SI EL USUARIO TIENE UNA SELECCION
 if (selectedTheme) {
-    // If the validation is fulfilled, we ask what the issue was to know if we activated or deactivated the dark
+    // SI LA VALIDACION ES CORRECTA EL TEMA CAMBIA
     document.body.classList[selectedTheme === 'dark' ? 'add' : 'remove'](darkTheme)
     themeButton.classList[selectedIcon === 'bx-moon' ? 'add' : 'remove'](iconTheme)
 }
 
-// Activate / deactivate the theme manually with the button
+// ACTIVAR Y DESESACTIVAR EL BOTON
 themeButton.addEventListener('click', () => {
-    // Add or remove the dark / icon theme
+    // AÑADIR O REMOVER EL ICONO
     document.body.classList.toggle(darkTheme)
     themeButton.classList.toggle(iconTheme)
-    // We save the theme and the current icon that the user chose
+    // GUARDANDO EL TEMA ACTUAL
     localStorage.setItem('selected-theme', getCurrentTheme())
     localStorage.setItem('selected-icon', getCurrentIcon())
 })
 
-/*==================== SCROLL REVEAL ANIMATION ====================*/
+/*==================== ANIMACION SCROLL ====================*/
 const sr = ScrollReveal({
     origin: 'top',
     distance: '30px',
